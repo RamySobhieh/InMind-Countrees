@@ -10,6 +10,6 @@
   }
 
   .input {
-    @apply appearance-none block w-full bg-beige text-gray border-none rounded-lg py-3 px-4 leading-tight;
+    @apply appearance-none block w-full bg-beige text-gray border-none rounded-lg py-3 px-4 leading-tight focus:outline-gray;
   }
 }

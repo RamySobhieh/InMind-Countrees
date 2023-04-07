@@ -9,6 +9,9 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
+import { CountryCardComponent } from './country-card/country-card.component';
+import { FilterComponent } from './filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +21,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SignUpComponent,
     SearchPageComponent,
     SearchBarComponent,
+    CountryCardComponent,
+    FilterComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FontAwesomeModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
