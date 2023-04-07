@@ -12,6 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { CountryCardComponent } from './country-card/country-card.component';
 import { FilterComponent } from './filter/filter.component';
+import { DisplayPageComponent } from './display-page/display-page.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FilterComponent } from './filter/filter.component';
     SearchBarComponent,
     CountryCardComponent,
     FilterComponent,
+    DisplayPageComponent,
   ],
   imports: [
     BrowserModule,

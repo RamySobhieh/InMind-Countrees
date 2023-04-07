@@ -23,17 +23,19 @@
       </div>
     </div>
   </div>
-  <app-search-bar [searchCountry]="searchCountry"></app-search-bar>
+  <app-search-bar [searchCountry]="searchCountry" class="z-30"></app-search-bar>
   <div
     *ngIf="data.length"
     class="w-full p-8 flex flex-row flex-wrap justify-center items-center gap-8"
   >
     <div *ngFor="let country of data">
-      <app-country-card
-        [countryName]="country.name.common"
-        [ImgSrc]="country.flags.svg"
-        [continent]="country.continents[0]"
-      ></app-country-card>
+      <a [routerLink]="['/country/', country.name.common]">
+        <app-country-card
+          [countryName]="country.name.common"
+          [ImgSrc]="country.flags.svg"
+          [continent]="country.continents[0]"
+        ></app-country-card>
+      </a>
     </div>
   </div>
 </div>

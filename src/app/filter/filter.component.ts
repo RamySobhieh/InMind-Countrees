@@ -8,4 +8,9 @@ import { faFilter } from '@fortawesome/free-solid-svg-icons';
 })
 export class FilterComponent {
   faFilter = faFilter;
+  isOpened: boolean = false;
+
+  setIsOpened(): void {
+    this.isOpened = !this.isOpened;
+  }
 }
