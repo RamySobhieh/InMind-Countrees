@@ -1,0 +1,27 @@
+<div class="relative w-full h-full flex flex-col mx-auto">
+  <div class="w-full h-[400px]">
+    <img
+      src="../../assets/countries-list.jpg"
+      alt=""
+      class="object-fill h-full w-full object-center"
+    />
+  </div>
+  <div
+    class="absolute top-0 left-0 flex flex-row p-8 px-14 justify-between items-center w-full z-10"
+  >
+    <img
+      src="../../assets/logo_white.png"
+      alt=""
+      class="w-[140px] object-cover"
+    />
+    <div class="flex flex-row justify-between items-center space-x-4">
+      <p class="text-white text-xl">Hi, John</p>
+      <div
+        class="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center cursor-pointer"
+      >
+        <fa-icon [icon]="faUser" class="text-white"></fa-icon>
+      </div>
+    </div>
+  </div>
+  <app-search-bar></app-search-bar>
+</div>

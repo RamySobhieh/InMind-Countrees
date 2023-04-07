@@ -1,0 +1,19 @@
+<div
+  class="relative w-screen h-screen p-14 flex flex-col items-center justify-center lg:justify-start lg:items-start bg-white"
+>
+  <div class="z-10">
+    <img src="../../assets/logo_blue.png" alt="" class="mb-[70px] w-[180px]" />
+    <app-login *ngIf="isLogin" [onChange]="onChange"></app-login>
+    <app-sign-up *ngIf="!isLogin" [onChange]="onChange"></app-sign-up>
+  </div>
+  <div class="absolute top-0 right-0 h-full w-[800px]">
+    <img
+      src="../../assets/login-background.jpg"
+      class="object-cover w-full h-full lg:opacity-70 opacity-30"
+      alt=""
+    />
+  </div>
+  <div
+    class="absolute top-0 h-full w-[300px] right-[500px] bg-gradient-to-r from-white to-transparent"
+  ></div>
+</div>
