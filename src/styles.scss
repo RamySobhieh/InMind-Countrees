@@ -13,3 +13,11 @@
     @apply appearance-none block w-full bg-beige text-gray border-none rounded-lg py-3 px-4 leading-tight focus:outline-gray;
   }
 }
+
+@layer utilities {
+  .scrollbar-custom {
+    scroll-margin-top: 4px;
+    scrollbar-base-color: #3c73cb;
+    scrollbar-width: 2px;
+  }
+}

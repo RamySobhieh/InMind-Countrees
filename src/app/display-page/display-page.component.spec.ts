@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DisplayPageComponent } from './display-page.component';
 
 describe('DisplayPageComponent', () => {
@@ -8,9 +7,8 @@ describe('DisplayPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DisplayPageComponent ]
-    })
-    .compileComponents();
+      declarations: [DisplayPageComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DisplayPageComponent);
     component = fixture.componentInstance;

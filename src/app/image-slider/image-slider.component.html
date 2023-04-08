@@ -1,0 +1,14 @@
+<div
+  class="flex flex-row overflow-x-scroll h-[150px] items-center space-x-8 snap-x"
+>
+  <div
+    *ngFor="let image of imgArray.results"
+    class="h-[90px] w-[160px] snap-center"
+  >
+    <img
+      src="{{ image.urls.small }}"
+      class="min-w-[160px] min-h-[90px] w-full h-full object-cover object-center"
+      alt=""
+    />"
+  </div>
+</div>

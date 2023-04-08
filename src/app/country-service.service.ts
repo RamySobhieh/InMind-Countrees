@@ -19,4 +19,10 @@ export class CountryServiceService {
       `https://restcountries.com/v3.1/name/${name}`
     );
   }
+
+  getStrictByName(name: string): Observable<any> {
+    return this.http.get<any>(
+      `https://restcountries.com/v3.1/name/${name}?fullText=true`
+    );
+  }
 }

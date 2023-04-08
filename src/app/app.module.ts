@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CountryCardComponent } from './country-card/country-card.component';
 import { FilterComponent } from './filter/filter.component';
 import { DisplayPageComponent } from './display-page/display-page.component';
+import { ImageSliderComponent } from './image-slider/image-slider.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DisplayPageComponent } from './display-page/display-page.component';
     CountryCardComponent,
     FilterComponent,
     DisplayPageComponent,
+    ImageSliderComponent,
   ],
   imports: [
     BrowserModule,

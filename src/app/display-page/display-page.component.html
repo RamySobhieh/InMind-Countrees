@@ -1,1 +1,76 @@
-<p>display-page works!</p>
+<div class="w-full flex flex-col bg-beige min-h-screen">
+  <div
+    class="w-full mx-auto bg-blue h-30 p-8 px-4 md:px-12 flex justify-between items-center mb-10"
+  >
+    <img
+      src="../../assets/logo_white.png"
+      alt=""
+      class="w-[140px] object-cover"
+    />
+    <div class="flex flex-row justify-between items-center space-x-4">
+      <p class="text-white text-xl">Hi, John</p>
+      <div
+        class="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center cursor-pointer"
+      >
+        <fa-icon [icon]="faUser" class="text-white"></fa-icon>
+      </div>
+    </div>
+  </div>
+  <div class="w-full mx-auto flex flex-col p-8 max-w-[1400px] space-y-8">
+    <div
+      class="w-full flex items-center justify-between bg-white rounded-xl p-8"
+    >
+      <a [routerLink]="'/'">Go Back</a>
+      <a class="text-blue cursor-pointer">Edit</a>
+    </div>
+
+    <div
+      *ngIf="!isLoading"
+      class="flex flex-col lg:flex-row w-full lg:space-x-8"
+    >
+      <!-- CountryFlag Card -->
+      <div
+        class="w-full lg:w-1/3 flex flex-col justify-start items-center p-8 rounded-xl bg-white py-14 mb-8 lg:mb-0"
+      >
+        <div
+          class="rounded-full border border-blue aspect-square w-[80%] max-w-[250px] overflow-hidden mb-8"
+        >
+          <img
+            src="{{ country[0].flags.svg }}"
+            alt="alt"
+            class="w-full h-full object-cover object-center"
+          />
+        </div>
+        <h1 class="text-3xl font-semibold">{{ countryName }}</h1>
+        <h3 class="text-gray text-lg">{{ country[0].continents[0] }}</h3>
+      </div>
+
+      <!-- CountryInfo Card -->
+      <div class="flex flex-col space-y-8 w-full lg:w-2/3">
+        <div class="w-full bg-white rounded-xl mx-auto flex flex-col p-8">
+          <h1 class="text-3xl font-semibold mb-6">Information</h1>
+          <p class="text-lg font-semibold">
+            Popuplation:
+            <span class="font-normal text-base">
+              {{ country[0].population }}</span
+            >
+          </p>
+          <p class="text-lg font-semibold mb-12">
+            Spoken Languages:
+            <span
+              *ngFor="let prop of country[0].languages | keyvalue"
+              class="font-normal text-base"
+            >
+              {{ prop.value }},</span
+            >
+          </p>
+        </div>
+
+        <div class="w-full bg-white rounded-xl mx-auto flex flex-col p-8">
+          <h1 class="text-3xl font-semibold mb-6">Gallery</h1>
+          <app-image-slider [imgArray]="imgUnsplash"></app-image-slider>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

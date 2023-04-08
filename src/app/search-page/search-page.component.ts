@@ -34,6 +34,5 @@ export class SearchPageComponent {
   searchCountry = (country: Country[]): void => {
     this.data = country;
     this.cdr.detectChanges();
-    console.log(this.data);
   };
 }
