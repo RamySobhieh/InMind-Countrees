@@ -8,8 +8,4 @@ import { ImgUnsplash } from '../Gallery';
 })
 export class ImageSliderComponent {
   @Input() imgArray: ImgUnsplash = {} as ImgUnsplash;
-
-  ngOnInit() {
-    console.log(this.imgArray);
-  }
 }

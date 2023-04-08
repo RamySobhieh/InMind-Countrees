@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { CountryServiceService } from '../country-service.service';
@@ -21,7 +21,6 @@ export class DisplayPageComponent {
   constructor(
     private route: ActivatedRoute,
     private countryService: CountryServiceService,
-    private cdf: ChangeDetectorRef,
     private imgSerivce: UnsplashService
   ) {}
 
@@ -35,9 +34,8 @@ export class DisplayPageComponent {
       this.isLoading = false;
     });
 
-    this.imgSerivce.searchPhotos(this.countryName).subscribe((data) => {
-      this.imgUnsplash = data;
-      console.log(this.imgUnsplash);
-    });
+    // this.imgSerivce.searchPhotos(this.countryName).subscribe((data) => {
+    //   this.imgUnsplash = data;
+    // });
   }
 }

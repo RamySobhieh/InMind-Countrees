@@ -25,4 +25,9 @@ export class CountryServiceService {
       `https://restcountries.com/v3.1/name/${name}?fullText=true`
     );
   }
+
+  getByCode(code: string): Observable<any> {
+    return this.http.get<any>(`
+    https://restcountries.com/v3.1/alpha/${code}`);
+  }
 }
