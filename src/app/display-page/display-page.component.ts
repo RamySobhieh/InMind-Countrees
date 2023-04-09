@@ -34,8 +34,8 @@ export class DisplayPageComponent {
       this.isLoading = false;
     });
 
-    // this.imgSerivce.searchPhotos(this.countryName).subscribe((data) => {
-    //   this.imgUnsplash = data;
-    // });
+    this.imgSerivce.searchPhotos(this.countryName).subscribe((data) => {
+      this.imgUnsplash = data;
+    });
   }
 }
