@@ -77,14 +77,15 @@
     <div *ngIf="!isLoading" class="w-full">
       <h1 class="text-3xl font-semibold mb-4">Bordering Countries</h1>
       <div
-        class="flex flex-row space-x-4 overflow-auto w-full items-center h-28"
+        *ngIf="country[0].borders"
+        class="flex flex-row space-x-4 px-4 overflow-x-auto w-full items-center h-32 scrollbar-thumb-gray scrollbar-thin scrollbar-track-transparent"
       >
         <app-country-card
           *ngFor="let code of country[0].borders"
           [countryCode]="code"
         ></app-country-card>
-        <p *ngIf="!country[0].borders" class="text-xl">None</p>
       </div>
+      <p *ngIf="!country[0].borders" class="text-xl">None</p>
     </div>
   </div>
 </div>
