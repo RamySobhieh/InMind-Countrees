@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { Country } from '../app/Country';
 @Injectable({
   providedIn: 'root',
@@ -8,16 +8,22 @@ import { Country } from '../app/Country';
 export class CountryServiceService {
   constructor(private http: HttpClient) {}
 
-  data: Country[] = [];
+  public data: any;
 
-  getAll(): Observable<Country[]> {
-    return this.http.get<Country[]>('https://restcountries.com/v3.1/all');
+  getAll(): Observable<any[]> {
+    if (this.data) {
+      return of(this.data);
+    } else {
+      return this.http
+        .get<any>('https://restcountries.com/v3.1/all')
+        .pipe(tap((data) => (this.data = data)));
+    }
   }
 
   getByName(name: string): Observable<Country[]> {
-    return this.http.get<Country[]>(
-      `https://restcountries.com/v3.1/name/${name}`
-    );
+    return this.http
+      .get<Country[]>(`https://restcountries.com/v3.1/name/${name}`)
+      .pipe(tap((data) => (this.data = data)));
   }
 
   getStrictByName(name: string): Observable<any> {

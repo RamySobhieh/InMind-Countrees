@@ -17,9 +17,11 @@ export class CountryCardComponent implements OnInit {
   public country: any;
 
   ngOnInit(): void {
-    this.countryService.getByCode(this.countryCode).subscribe((data) => {
-      this.country = data;
-      console.log('Image Card' + this.country);
-    });
+    if (this.countryCode != '') {
+      this.countryService.getByCode(this.countryCode).subscribe((data) => {
+        this.country = data;
+        console.log('Image Card' + this.country);
+      });
+    }
   }
 }

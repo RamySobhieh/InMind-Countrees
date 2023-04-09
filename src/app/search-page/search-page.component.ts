@@ -17,7 +17,7 @@ import { Country } from '../Country';
 })
 export class SearchPageComponent {
   constructor(
-    private countryService: CountryServiceService,
+    public countryService: CountryServiceService,
     private cdr: ChangeDetectorRef
   ) {}
   faUser = faUser;
@@ -25,10 +25,7 @@ export class SearchPageComponent {
   data: Country[] = [];
 
   ngOnInit(): void {
-    this.countryService.getAll().subscribe((data) => {
-      this.data = data;
-      this.cdr.detectChanges();
-    });
+    this.cdr.detectChanges();
   }
 
   searchCountry = (country: Country[]): void => {

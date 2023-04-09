@@ -81,6 +81,7 @@
           *ngFor="let code of country[0].borders"
           [countryCode]="code"
         ></app-country-card>
+        <p *ngIf="country[0].borders.length == 0">None</p>
       </div>
     </div>
   </div>
