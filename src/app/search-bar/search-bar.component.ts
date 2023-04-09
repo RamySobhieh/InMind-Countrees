@@ -17,15 +17,18 @@ export class SearchBarComponent {
   public filtersArrays: string[] = [];
 
   @Input() searchCountry(country: Country[]): void {}
+  @Input() handleIsLoading(): void {}
 
   ngOnInit(): void {
     this.countryService.getAll().subscribe((data) => {
       this.data = data;
       this.filteredCountries = data;
       this.searchCountry(data);
+      this.handleIsLoading();
     });
   }
   public changeValue(event: Event): void {
+    this.handleIsLoading();
     this.inputValue = (event.target as HTMLInputElement).value;
     if (this.inputValue == '') {
       this.countryService.getAll().subscribe((data) => {
@@ -34,6 +37,7 @@ export class SearchBarComponent {
           this.filterCountries(this.filtersArrays);
         }
       });
+      this.handleIsLoading();
     } else {
       this.countryService.getByName(this.inputValue).subscribe((data) => {
         this.data = data;
@@ -41,6 +45,7 @@ export class SearchBarComponent {
           this.filterCountries(this.filtersArrays);
         }
       });
+      this.handleIsLoading();
     }
     this.searchCountry(this.data);
   }

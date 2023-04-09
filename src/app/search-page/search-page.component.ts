@@ -22,6 +22,8 @@ export class SearchPageComponent {
   ) {}
   faUser = faUser;
 
+  isLoading: boolean = true;
+
   data: Country[] = [];
 
   ngOnInit(): void {
@@ -30,6 +32,12 @@ export class SearchPageComponent {
 
   searchCountry = (country: Country[]): void => {
     this.data = country;
+    this.cdr.detectChanges();
+  };
+
+  handleIsLoading = (): void => {
+    this.isLoading = !this.isLoading;
+    console.log(this.isLoading);
     this.cdr.detectChanges();
   };
 }

@@ -14,6 +14,7 @@ import { CountryCardComponent } from './country-card/country-card.component';
 import { FilterComponent } from './filter/filter.component';
 import { DisplayPageComponent } from './display-page/display-page.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ImageSliderComponent } from './image-slider/image-slider.component';
     FilterComponent,
     DisplayPageComponent,
     ImageSliderComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
