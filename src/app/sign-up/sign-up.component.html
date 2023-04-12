@@ -11,7 +11,11 @@
 
   <!-- form -->
 
-  <form class="w-full max-w-lg pt-14">
+  <form
+    class="w-full max-w-lg pt-14"
+    (ngSubmit)="onSubmit()"
+    [formGroup]="signUpForm"
+  >
     <div class="flex flex-wrap -mx-3 mb-6">
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label
@@ -20,7 +24,13 @@
         >
           First Name
         </label>
-        <input class="input" id="first-name" type="text" placeholder="Doe" />
+        <input
+          class="input"
+          id="first-name"
+          type="text"
+          placeholder="Doe"
+          formControlName="firstName"
+        />
       </div>
       <div class="w-full md:w-1/2 px-3">
         <label
@@ -29,7 +39,13 @@
         >
           Last Name
         </label>
-        <input class="input" id="last-name" type="text" placeholder="Doe" />
+        <input
+          class="input"
+          id="last-name"
+          type="text"
+          placeholder="Doe"
+          formControlName="lastName"
+        />
       </div>
     </div>
     <div class="flex flex-wrap -mx-3 mb-6">
@@ -45,6 +61,7 @@
           id="email"
           type="text"
           placeholder="Doe@gmail.com"
+          formControlName="email"
         />
       </div>
     </div>
@@ -61,15 +78,17 @@
           id="password"
           type="password"
           placeholder="*************"
+          formControlName="password"
         />
       </div>
     </div>
+    <div class="flex w-full justify-end items-end">
+      <button
+        class="w-[180px] bg-green hover:bg-green/[0.7] text-white font-semibold tracking-wide rounded-full p-[12px]"
+        type="submit"
+      >
+        Sign Up
+      </button>
+    </div>
   </form>
-  <div class="flex w-full justify-end items-end">
-    <button
-      class="w-[180px] bg-green hover:bg-green/[0.7] text-white font-semibold tracking-wide rounded-full p-[12px]"
-    >
-      Sign Up
-    </button>
-  </div>
 </div>

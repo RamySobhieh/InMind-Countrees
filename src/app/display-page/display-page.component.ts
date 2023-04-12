@@ -27,15 +27,17 @@ export class DisplayPageComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.countryName = params.get('name') ?? '';
-    });
 
-    this.countryService.getStrictByName(this.countryName).subscribe((data) => {
-      this.country = data;
-      this.isLoading = false;
-    });
+      this.countryService
+        .getStrictByName(this.countryName)
+        .subscribe((data) => {
+          this.country = data;
+          this.isLoading = false;
+        });
 
-    this.imgSerivce.searchPhotos(this.countryName).subscribe((data) => {
-      this.imgUnsplash = data;
+      this.imgSerivce.searchPhotos(this.countryName).subscribe((data) => {
+        this.imgUnsplash = data;
+      });
     });
   }
 }
