@@ -20,7 +20,7 @@ export class CountryCardComponent implements OnInit {
     if (this.countryCode != '') {
       this.countryService.getByCode(this.countryCode).subscribe((data) => {
         this.country = data;
-        console.log('Image Card' + this.country);
+        console.log(this.country);
       });
     }
   }
