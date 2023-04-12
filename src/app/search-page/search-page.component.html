@@ -24,13 +24,12 @@
     </div>
   </div>
   <app-search-bar
-    [searchCountry]="searchCountry"
     [handleIsLoading]="handleIsLoading"
     class="z-30"
   ></app-search-bar>
-  <app-loading *ngIf="isLoading == true"></app-loading>
+  <app-loading *ngIf="isLoading"></app-loading>
   <div
-    *ngIf="isLoading == false"
+    *ngIf="!isLoading"
     class="w-full p-8 flex flex-row flex-wrap justify-center items-center gap-8"
   >
     <div *ngFor="let country of data">

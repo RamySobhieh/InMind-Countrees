@@ -68,7 +68,12 @@
 
         <div class="w-full bg-white rounded-xl mx-auto flex flex-col p-8">
           <h1 class="text-3xl font-semibold mb-6">Gallery</h1>
-          <app-image-slider [imgArray]="imgUnsplash"></app-image-slider>
+          <div class="relative">
+            <app-image-slider [imgArray]="imgUnsplash"></app-image-slider>
+            <div
+              class="absolute right-0 top-0 h-full z-10 w-8 md:w-14 bg-gradient-to-r from-transparent to-white"
+            ></div>
+          </div>
         </div>
       </div>
     </div>

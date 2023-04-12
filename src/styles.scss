@@ -4,15 +4,10 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 
-@layer base {
-  * {
-    @apply font-poppins;
-  }
-
-  .input {
-    @apply appearance-none block w-full bg-beige text-gray border-none rounded-lg py-3 px-4 leading-tight focus:outline-gray;
-  }
-}
+$blue: "#3c73cb";
+$green: "#3d8d7b";
+$beige: "#f4f4f4";
+$gray: "#919191";
 
 @layer utilities {
   .scrollbar-custom {
@@ -20,4 +15,12 @@
     scrollbar-base-color: #3c73cb;
     scrollbar-width: 2px;
   }
+}
+
+.input {
+  @apply appearance-none block w-full bg-beige text-gray border-none rounded-lg py-3 px-4 leading-tight focus:outline-gray;
+}
+
+* {
+  @apply font-poppins;
 }

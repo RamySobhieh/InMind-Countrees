@@ -13,31 +13,22 @@ import { Country } from '../Country';
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchPageComponent {
-  constructor(
-    public countryService: CountryServiceService,
-    private cdr: ChangeDetectorRef
-  ) {}
+  constructor(public countryService: CountryServiceService) {}
   faUser = faUser;
 
   isLoading: boolean = true;
 
-  data: Country[] = [];
+  data: any;
 
   ngOnInit(): void {
-    this.cdr.detectChanges();
+    this.countryService.data.subscribe((data) => {
+      this.data = data;
+    });
   }
-
-  searchCountry = (country: Country[]): void => {
-    this.data = country;
-    this.cdr.detectChanges();
-  };
 
   handleIsLoading = (): void => {
     this.isLoading = !this.isLoading;
-    console.log(this.isLoading);
-    this.cdr.detectChanges();
   };
 }

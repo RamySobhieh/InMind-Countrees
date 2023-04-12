@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, Observable, of, tap } from 'rxjs';
 import { Country } from '../app/Country';
 @Injectable({
   providedIn: 'root',
@@ -8,22 +8,14 @@ import { Country } from '../app/Country';
 export class CountryServiceService {
   constructor(private http: HttpClient) {}
 
-  public data: any;
+  public data: BehaviorSubject<any> = new BehaviorSubject<any>([]);
 
-  getAll(): Observable<any[]> {
-    if (this.data) {
-      return of(this.data);
-    } else {
-      return this.http
-        .get<any>('https://restcountries.com/v3.1/all')
-        .pipe(tap((data) => (this.data = data)));
-    }
+  getAll(): Observable<any> {
+    return this.http.get<any>('https://restcountries.com/v3.1/all');
   }
 
-  getByName(name: string): Observable<Country[]> {
-    return this.http
-      .get<Country[]>(`https://restcountries.com/v3.1/name/${name}`)
-      .pipe(tap((data) => (this.data = data)));
+  getByName(name: string): Observable<any> {
+    return this.http.get<any>(`https://restcountries.com/v3.1/name/${name}`);
   }
 
   getStrictByName(name: string): Observable<any> {
@@ -35,5 +27,13 @@ export class CountryServiceService {
   getByCode(code: string): Observable<any> {
     return this.http.get<any>(`
     https://restcountries.com/v3.1/alpha/${code}`);
+  }
+
+  public getData(): any {
+    return this.data.value;
+  }
+
+  public setData(data: any): void {
+    this.data.next(data);
   }
 }
