@@ -16,6 +16,8 @@ import { FilterComponent } from './filter/filter.component';
 import { DisplayPageComponent } from './display-page/display-page.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
 import { LoadingComponent } from './loading/loading.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../app/Auth/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { LoadingComponent } from './loading/loading.component';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

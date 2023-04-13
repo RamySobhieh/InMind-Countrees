@@ -82,10 +82,25 @@
         />
       </div>
     </div>
+    <div class="w-full flex flex-row items-center">
+      <input
+        id="admin"
+        type="checkbox"
+        value="admin"
+        formControlName="isAdmin"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+      />
+      <label
+        for="admin"
+        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+        >Create <span class="font-bold">Admin</span> Account</label
+      >
+    </div>
     <div class="flex w-full justify-end items-end">
       <button
         class="w-[180px] bg-green hover:bg-green/[0.7] text-white font-semibold tracking-wide rounded-full p-[12px]"
         type="submit"
+        [disabled]="!signUpForm.valid"
       >
         Sign Up
       </button>

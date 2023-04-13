@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ImgUnsplash } from '../app/Gallery';
+import { ImgUnsplash } from './ViewModels/Gallery';
 import { Observable } from 'rxjs';
 
 @Injectable({

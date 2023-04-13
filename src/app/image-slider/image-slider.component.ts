@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ImgUnsplash } from '../Gallery';
+import { ImgUnsplash } from '../ViewModels/Gallery';
 
 @Component({
   selector: 'app-image-slider',

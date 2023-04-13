@@ -8,7 +8,7 @@
       class="w-[140px] object-cover"
     />
     <div class="flex flex-row justify-between items-center space-x-4">
-      <p class="text-white text-xl">Hi, John</p>
+      <p class="text-white text-xl">Hi, {{ username }}</p>
       <div
         class="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center cursor-pointer"
       >
@@ -21,7 +21,7 @@
       class="w-full flex items-center justify-between bg-white rounded-xl p-8"
     >
       <a [routerLink]="'/'">Go Back</a>
-      <a class="text-blue cursor-pointer">Edit</a>
+      <a *ngIf="isAdmin" class="text-blue cursor-pointer">Edit</a>
     </div>
 
     <div

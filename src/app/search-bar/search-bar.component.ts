@@ -1,8 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { CountryServiceService } from '../country-service.service';
-import { Country } from '../Country';
-import { catchError } from 'rxjs/operators';
+import { Country } from '../ViewModels/Country';
+import {
+  catchError,
+  debounceTime,
+  distinctUntilChanged,
+  switchMap,
+} from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 
@@ -29,7 +34,6 @@ export class SearchBarComponent {
     });
   }
   public changeValue(event: Event): void {
-    this.handleIsLoading();
     this.inputValue = (event.target as HTMLInputElement).value;
     if (this.inputValue == '') {
       this.countryService
@@ -38,39 +42,37 @@ export class SearchBarComponent {
           catchError((error: HttpErrorResponse) => {
             console.log('Error:', error);
             this.countryService.setData([]);
-            this.handleIsLoading();
             return throwError('Something went wrong');
           })
         )
-        .subscribe((data) => {
-          this.data = data;
+        .subscribe((response) => {
+          this.data = response;
           if (this.filtersArrays.length > 0) {
             this.filterCountries(this.filtersArrays);
           } else {
             this.countryService.setData(this.data);
           }
-          this.handleIsLoading();
         });
     } else {
       this.currSearch = this.inputValue;
       this.countryService
         .getByName(this.inputValue)
+        .pipe(debounceTime(3000), distinctUntilChanged())
         .pipe(
           catchError((error: HttpErrorResponse) => {
             console.log('Error:', error);
             this.countryService.setData([]);
-            this.handleIsLoading();
             return throwError('Something went wrong');
           })
         )
         .subscribe((data) => {
           this.data = data;
+          console.log(this.data);
           if (this.filtersArrays.length > 0) {
             this.filterCountries(this.filtersArrays);
           } else {
             this.countryService.setData(this.data);
           }
-          this.handleIsLoading();
         });
     }
   }
