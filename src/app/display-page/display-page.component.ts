@@ -5,6 +5,7 @@ import { CountryServiceService } from '../country-service.service';
 import { UnsplashService } from '../unsplash.service';
 import { ImgUnsplash } from '../ViewModels/Gallery';
 import jwt_decode from 'jwt-decode';
+import { AuthService } from '../Auth/auth.service';
 
 @Component({
   selector: 'app-display-page',
@@ -24,7 +25,8 @@ export class DisplayPageComponent {
     private route: ActivatedRoute,
     private countryService: CountryServiceService,
     private imgSerivce: UnsplashService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -54,5 +56,10 @@ export class DisplayPageComponent {
         this.imgUnsplash = data;
       });
     });
+  }
+
+  logOut(): void {
+    this.authService.logOut();
+    this.router.navigate(['/auth']);
   }
 }

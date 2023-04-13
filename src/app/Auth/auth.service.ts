@@ -49,4 +49,9 @@ export class AuthService {
       RoleName,
     });
   }
+
+  logOut(): void {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+  }
 }

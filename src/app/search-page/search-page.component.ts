@@ -3,6 +3,8 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { CountryServiceService } from '../country-service.service';
 import { Country } from '../ViewModels/Country';
 import jwt_decode from 'jwt-decode';
+import { AuthService } from '../Auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-page',
@@ -10,7 +12,11 @@ import jwt_decode from 'jwt-decode';
   styleUrls: ['./search-page.component.scss'],
 })
 export class SearchPageComponent {
-  constructor(public countryService: CountryServiceService) {}
+  constructor(
+    public countryService: CountryServiceService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
   faUser = faUser;
   username: string = '';
 
@@ -33,4 +39,9 @@ export class SearchPageComponent {
   handleIsLoading = (): void => {
     this.isLoading = !this.isLoading;
   };
+
+  logOut(): void {
+    this.authService.logOut();
+    this.router.navigate(['/auth']);
+  }
 }
