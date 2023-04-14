@@ -5,7 +5,7 @@
     <input
       class="input rounded-xl w-full drop-shadow-xl h-16"
       placeholder="Country..."
-      (input)="changeValue($event)"
+      [formControl]="searchControl"
     />
     <fa-icon
       [icon]="faMagnifyingGlass"
