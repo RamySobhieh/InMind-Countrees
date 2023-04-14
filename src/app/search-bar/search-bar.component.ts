@@ -34,6 +34,7 @@ export class SearchBarComponent {
       .pipe(debounceTime(500), distinctUntilChanged())
       .subscribe((value) => {
         this.handleIsLoading();
+        this.currSearch = value;
         if (value == '') {
           this.countryService
             .getAll()
@@ -55,7 +56,6 @@ export class SearchBarComponent {
               this.handleIsLoading();
             });
         } else {
-          this.currSearch = value;
           this.countryService
             .getByName(value)
             .pipe(

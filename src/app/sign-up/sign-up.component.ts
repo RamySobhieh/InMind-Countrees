@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../Auth/auth.service';
-import { SignUpResponse } from '../ViewModels/SignUpResponse';
 import { catchError, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -25,7 +24,7 @@ export class SignUpComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(3)]],
       lastName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
       isAdmin: [false, [Validators.required]],
     });
   }
@@ -52,7 +51,6 @@ export class SignUpComponent implements OnInit {
             })
           )
           .subscribe((data) => {
-            console.log(data);
             this.authService
               .login(data.email, this.signUpForm.get('password')?.value)
               .subscribe((data) => {
@@ -79,7 +77,6 @@ export class SignUpComponent implements OnInit {
             })
           )
           .subscribe((data) => {
-            console.log(data);
             this.authService
               .login(data.email, this.signUpForm.get('password')?.value)
               .subscribe((data) => {

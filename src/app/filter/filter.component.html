@@ -1,34 +1,36 @@
-<div
-  class="rounded-full w-14 h-14 bg-white drop-shadow-xl flex items-center justify-center relative cursor-pointer hover:scale-105 duration-150 ease-in group z-10"
-  [ngClass]="{
-    'bg-blue': isOpened === true,
-    ' bg-white': isOpened === false
-  }"
-  (click)="setIsOpened()"
->
-  <fa-icon [icon]="faFilter" class="text-gray text-lg duration-150"></fa-icon>
-</div>
-<div
-  class="w-[180px] rounded-xl absolute top-6 right-10 space-y-4 p-4 bg-beige drop-shadow-lg"
-  [ngClass]="{
-    hidden: isOpened === false,
-    'flex flex-col': isOpened === true
-  }"
->
-  <h2 class="font-semibold text-blue text-lg">Filter By Region</h2>
+<div class="relative">
+  <div
+    class="rounded-full w-14 h-14 bg-white drop-shadow-xl flex items-center justify-center relative cursor-pointer hover:scale-105 duration-150 ease-in group z-10"
+    [ngClass]="{
+      'bg-blue': isOpened === true,
+      ' bg-white': isOpened === false
+    }"
+    (click)="setIsOpened()"
+  >
+    <fa-icon [icon]="faFilter" class="text-gray text-lg duration-150"></fa-icon>
+  </div>
+  <div
+    class="w-[180px] rounded-xl absolute top-6 right-10 space-y-4 p-4 bg-beige drop-shadow-lg"
+    [ngClass]="{
+      hidden: isOpened === false,
+      'flex flex-col': isOpened === true
+    }"
+  >
+    <h2 class="font-semibold text-blue text-lg">Filter By Region</h2>
 
-  <div *ngFor="let continent of continents" class="flex items-center">
-    <input
-      id="{{ continent }}"
-      type="checkbox"
-      value="{{ continent }}"
-      (change)="updateFilters(continent, $event)"
-      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-    />
-    <label
-      for="{{ continent }}"
-      class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-      >{{ continent }}</label
-    >
+    <div *ngFor="let continent of continents" class="flex items-center">
+      <input
+        id="{{ continent }}"
+        type="checkbox"
+        value="{{ continent }}"
+        (change)="updateFilters(continent, $event)"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+      />
+      <label
+        for="{{ continent }}"
+        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+        >{{ continent }}</label
+      >
+    </div>
   </div>
 </div>

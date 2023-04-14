@@ -15,7 +15,9 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const authToken = localStorage.getItem('accessToken');
     if (
-      req.url.includes('/Login()' || '/SignUp()' || '/CreateAdminUser()') ||
+      req.url.includes('/Login()') ||
+      req.url.includes('/SignUp()') ||
+      req.url.includes('/CreateAdminUser()') ||
       req.url.includes('/api.unsplash.com')
     ) {
       return next.handle(req);
@@ -27,6 +29,7 @@ export class AuthInterceptor implements HttpInterceptor {
         return next.handle(authReq);
       }
       this.router.navigate(['/auth']);
+      console.log('empty req returned');
       return EMPTY;
     }
   }
