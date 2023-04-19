@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { CountryServiceService } from '../country-service.service';
@@ -19,7 +19,9 @@ export class DisplayPageComponent {
   public country: any;
   public isLoading: boolean = true;
   public imgUnsplash: ImgUnsplash = {} as ImgUnsplash;
+  public galleryArray: string[] = [];
   public username: string = '';
+  public inEditMode: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -54,6 +56,9 @@ export class DisplayPageComponent {
 
       this.imgSerivce.searchPhotos(this.countryName).subscribe((data) => {
         this.imgUnsplash = data;
+        this.imgUnsplash.results.forEach((result) => {
+          this.galleryArray.push(result.urls.small);
+        });
       });
     });
   }
@@ -62,4 +67,21 @@ export class DisplayPageComponent {
     this.authService.logOut();
     this.router.navigate(['/auth']);
   }
+
+  handleEdit = () => {
+    this.inEditMode = !this.inEditMode;
+  };
+
+  onUpload = (event: any) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64Image = reader.result?.toString();
+      console.log(base64Image);
+      if (base64Image != undefined) {
+        this.galleryArray.push(base64Image);
+      }
+    };
+    reader.readAsDataURL(file);
+  };
 }

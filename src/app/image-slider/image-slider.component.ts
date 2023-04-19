@@ -7,5 +7,5 @@ import { ImgUnsplash } from '../ViewModels/Gallery';
   styleUrls: ['./image-slider.component.scss'],
 })
 export class ImageSliderComponent {
-  @Input() imgArray: ImgUnsplash = {} as ImgUnsplash;
+  @Input() galleryArray: string[] = [];
 }

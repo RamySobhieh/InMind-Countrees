@@ -2,13 +2,13 @@
   class="flex flex-row overflow-x-scroll h-[160px] items-center space-x-8 snap-x scrollbar-thin scrollbar-thumb-gray scrollbar-track-transparent pr-8"
 >
   <div
-    *ngFor="let image of imgArray.results"
+    *ngFor="let image of galleryArray"
     class="h-[90px] w-[160px] snap-center"
   >
     <img
-      src="{{ image.urls.small }}"
+      src="{{ image }}"
       class="min-w-[160px] min-h-[90px] w-full h-full object-cover object-center"
       alt=""
-    />"
+    />
   </div>
 </div>

@@ -24,7 +24,18 @@
       class="w-full flex items-center justify-between bg-white rounded-xl p-8"
     >
       <a [routerLink]="'/'">Go Back</a>
-      <a *ngIf="isAdmin" class="text-blue cursor-pointer">Edit</a>
+      <a
+        *ngIf="isAdmin && !inEditMode"
+        class="text-blue cursor-pointer"
+        (click)="handleEdit()"
+        >Edit</a
+      >
+      <a
+        *ngIf="isAdmin && inEditMode"
+        (click)="handleEdit()"
+        class="text-blue cursor-pointer"
+        >Done</a
+      >
     </div>
 
     <div
@@ -70,9 +81,26 @@
         </div>
 
         <div class="w-full bg-white rounded-xl mx-auto flex flex-col p-8">
-          <h1 class="text-3xl font-semibold mb-6">Gallery</h1>
+          <div
+            class="w-full justify-between flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 mb-6"
+          >
+            <h1 class="text-3xl font-semibold">Gallery</h1>
+            <input
+              type="file"
+              (change)="onUpload($event)"
+              class="hidden"
+              #fileInput
+            />
+            <button
+              *ngIf="isAdmin && inEditMode"
+              (click)="fileInput.click()"
+              class="w-[180px] bg-green hover:bg-green/[0.7] text-white font-semibold tracking-wide rounded-full p-[12px]"
+            >
+              Upload Image
+            </button>
+          </div>
           <div class="relative">
-            <app-image-slider [imgArray]="imgUnsplash"></app-image-slider>
+            <app-image-slider [galleryArray]="galleryArray"></app-image-slider>
             <div
               class="absolute right-0 top-0 h-full z-10 w-8 md:w-14 bg-gradient-to-r from-transparent to-white"
             ></div>
