@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { LoginResponse } from '../ViewModels/LoginResponse';
 import { SignUpResponse } from '../ViewModels/SignUpResponse';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -53,5 +54,40 @@ export class AuthService {
   logOut(): void {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
+  }
+
+  refresh(): Observable<any> {
+    const refreshToken = localStorage.getItem('refreshToken');
+    const body = { refreshToken };
+    return this.http
+      .post<any>('http://173.249.40.235:5005/api/User/RefreshToken()', body)
+      .pipe(
+        tap((response) => {
+          localStorage.setItem('accessToken', response.AccessToken);
+          localStorage.setItem('refreshToken', response.RefreshToken);
+        })
+      );
+  }
+
+  validateAccessToken() {
+    const accessToken = localStorage.getItem('accessToken');
+    if (!accessToken) return false;
+    else {
+      const decodedToken: any = jwt_decode(accessToken);
+      const tokenDate = decodedToken.exp * 1000;
+      const currDate = Date.now();
+      return tokenDate > currDate;
+    }
+  }
+
+  validateRefreshToken() {
+    const refreshToken = localStorage.getItem('refreshToken');
+    if (!refreshToken) return false;
+    else {
+      const decodedToken: any = jwt_decode(refreshToken);
+      const tokenDate = decodedToken.exp * 1000;
+      const currDate = Date.now();
+      return tokenDate > currDate;
+    }
   }
 }
